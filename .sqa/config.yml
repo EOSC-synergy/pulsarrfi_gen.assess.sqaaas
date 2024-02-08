@@ -1,0 +1,42 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.0.0
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    gitlab.com/ml-ppa/pulsarrfi_gen:
+      branch: main
+      repo: https://gitlab.com/ml-ppa/pulsarrfi_gen
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      gitlab.com/ml-ppa/pulsarrfi_gen git:
+        commands:
+        - /usr/bin/env sh .sqa/script.snappy-thistle-tarsier.sh
+        container: qc.acc_silly-sepia-mouse
+  QC.Doc:
+    repos:
+      gitlab.com/ml-ppa/pulsarrfi_gen find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.greasy-myrtle-tuatara.sh
+        container: qc.doc_beady-red-coyote
+      gitlab.com/ml-ppa/pulsarrfi_gen git:
+        commands:
+        - /usr/bin/env sh .sqa/script.homely-tomato-hornet.sh
+        container: qc.doc_flaky-corn-zonkey
+  QC.Lic:
+    repos:
+      gitlab.com/ml-ppa/pulsarrfi_gen licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.goopy-harlequin-lizard.sh
+        container: qc.lic_sickly-harlequin-bee
+  QC.Ver:
+    repos:
+      gitlab.com/ml-ppa/pulsarrfi_gen get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.skimpy-silver-tortoise.sh
+        container: qc.ver_stinky-red-lizard
+timeout: 5400
