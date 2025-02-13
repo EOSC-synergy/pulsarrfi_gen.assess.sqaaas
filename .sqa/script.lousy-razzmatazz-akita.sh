@@ -5,5 +5,5 @@
 
 (
 cd gitlab.com/ml-ppa/pulsarrfi_gen &&
-    git rev-parse --is-inside-work-tree
+    flake8 .
 )

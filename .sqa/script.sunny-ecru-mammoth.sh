@@ -5,5 +5,5 @@
 
 (
 cd gitlab.com/ml-ppa/pulsarrfi_gen &&
-    licensee detect . --confidence 60 --json
+    mdl --json  .
 )
